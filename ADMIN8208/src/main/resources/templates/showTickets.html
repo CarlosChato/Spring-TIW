@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+
+    <link type="text/css" href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+<header class='header'>
+    <div class='logo'>
+        <a href="'#'">
+            <img src="https://th.bing.com/th/id/R.0bc4309df799b44f1303b200d1cbccc1?rik=Bn80xKGZvA9%2fqw&pid=ImgRaw&r=0"/>
+        </a>
+    </div>
+    <nav class='links-nav'>
+        <ul >
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Usuarios</button>
+                    <div class="dropdown-content">
+                        <a href="createUser">Añadir</a>
+                        <a href="showUsers">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Tickets</button>
+                    <div class="dropdown-content">
+                        <a href="createTicket">Añadir</a>
+                        <a href="showTickets">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Eventos</button>
+                    <div class="dropdown-content">
+                        <a href="createEvent">Añadir</a>
+                        <a href="showEvents">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+<br>
+<br>
+<div class="evento" th:each="ticket : ${ticketList}">
+    <div style="text-align: center">
+        <br>
+        <span>Tipo:</span>
+        <span th:text="${ticket.getType()}"></span>
+        <br>
+        <br>
+        <span>Código:</span>
+        <span th:text="${ticket.getCode()}"></span>
+        <br>
+        <br>
+        <span>Precio:</span>
+        <span th:text="${ticket.getPrice()}"></span>
+        <br>
+        <br>
+        <span>Evento:</span>
+        <span th:text="${ticket.getEvent()}"></span>
+        <br>
+        <br>
+        <span>Creado por:</span>
+        <span th:text="${ticket.getUser()}"></span>
+        <br>
+        <br>
+        <button class='button-nav' th:attr="onclick=|location.href='/updateTicket/${ticket.getId()}'|">Editar</button>
+        <button class='button-nav' th:attr="onclick=|location.href='/deleteTicket/${ticket.getId()}'|">Eliminar</button>
+    </div>
+</div>
+</body>
+</html>

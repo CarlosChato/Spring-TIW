@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+
+    <link type="text/css" href="../css/style.css" rel="stylesheet" />
+</head>
+<body>
+<header class='header'>
+    <div class='logo'>
+        <a href="'#'">
+            <img src="https://th.bing.com/th/id/R.0bc4309df799b44f1303b200d1cbccc1?rik=Bn80xKGZvA9%2fqw&pid=ImgRaw&r=0"/>
+        </a>
+    </div>
+    <nav class='links-nav'>
+        <ul >
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Usuarios</button>
+                    <div class="dropdown-content">
+                        <a href="createUser">Añadir</a>
+                        <a href="showUsers">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Tickets</button>
+                    <div class="dropdown-content">
+                        <a href="createTicket">Añadir</a>
+                        <a href="showTickets">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="dropdown">
+                    <button class="dropbtn">Eventos</button>
+                    <div class="dropdown-content">
+                        <a href="createEvent">Añadir</a>
+                        <a href="showEvents">Mostrar</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
+<br>
+<br>
+<div class="content" style="text-align:center">
+    <form th:action="${#httpServletRequest.requestURI}" method="POST">
+        <input name="price" placeholder="Precio" type="text" class="input" required style='margin-top:80px'>
+        <input name="type" placeholder="Tipo de entrada" type="text" class="input" required style='margin-top:80px'>
+        <input name="code" placeholder="Código de la entrada" type="text" class="input" required style='margin-top:80px'>
+        <input name="event" placeholder="ID Evento" type="text" class="input" required style='margin-top:80px'>
+        <input name="user" placeholder="ID Usuario" type="text" class="input" required style='margin-top:80px'>
+        <br>
+        <input type='submit' class='button-submit' value='Actualizar'  style='margin-top:80px'>
+    </form>
+</div>
+</body>
+</html>
